@@ -17,16 +17,53 @@ Copyright (c) 2022 OSkey SAS. MIT License.
 
 ### Swift Package Manager
 
-Open Xcode, go to File -> Swift Packages -> Add Package Dependency and enter 
+Open Xcode, go to File -> Swift Packages -> Add Package Dependency and enter
 `https://github.com/oskey-org/swift-ui-carousel-oskey-org.git`.
 
 You can also add ACarousel as a dependency to your Package.swift:
 
 dependencies: [
-  .package(url: "https://github.com/oskey-org/swift-ui-carousel-oskey-org.git", from: "1.0.0")
+.package(url: "https://github.com/oskey-org/swift-ui-carousel-oskey-org.git", from: "1.0.0")
 ]
 
 ## Use in your project
+
+Below is an example of sliding cards, with a person photo and it's name below.
+
+```swift
+
+import SwifUI
+import OSKUICarousel
+
+struct People: Identifiable {
+  var id: String { return name }
+
+  let name: String
+  let photo: URL
+}
+
+struct ContentView: View {
+  @State var peoples: [People] = [
+    People(name: "Person 1", photo: URL("https://thispersondoesnotexist.com/image"),
+    People(name: "Person 2", photo: URL("https://thispersondoesnotexist.com/image"),
+    People(name: "Person 3", photo: URL("https://thispersondoesnotexist.com/image"),
+    People(name: "Person 4", photo: URL("https://thispersondoesnotexist.com/image"),
+  ]
+
+  var body: some View {
+    OSKUICarousel(data) { item in
+      VStack(spacing: 0) {
+        AsyncImage(url: item.photo)
+        Text(item.name)
+          .padding()
+      }
+      .clippeShape(RoundedRectangle(cornerRadius: 8))
+      .border()
+    }
+  }
+}
+
+```
 
 ## Styling your carousel
 
@@ -42,9 +79,9 @@ An example can be found [here](./Example/OSKUICarouselApp/README.md).
 
 This example is inspired by:
 
-- [A carousel view for SwiftUI](https://iosexample.com/a-carousel-view-for-swiftui/): 
+- [A carousel view for SwiftUI](https://iosexample.com/a-carousel-view-for-swiftui/):
   A carousel
-- [SwiftUI Custom Styling](https://swiftui-lab.com/custom-styling/): An example 
+- [SwiftUI Custom Styling](https://swiftui-lab.com/custom-styling/): An example
   of custom view with styling (like for Button), with an [example](https://gist.github.com/swiftui-lab/4469338fd099285aed2d1fd00f5da745)
 
 ## Contributions
