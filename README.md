@@ -158,7 +158,7 @@ This package has no dependencies.
 
 ## Example
 
-An example can be found [here](./Example/OSKUICarouselApp/README.md).
+An example can be found [here](./Example/OSKUICarouselApp/).
 
 ## Thanks
 
