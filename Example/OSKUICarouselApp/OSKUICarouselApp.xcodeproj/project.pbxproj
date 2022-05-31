@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		791423C528465F8D00195225 /* OSKUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8D32845FCCA00AB778C /* OSKUIColor.swift */; };
+		791423C628465F9200195225 /* OSKUIMyCarouselStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8D528461E9400AB778C /* OSKUIMyCarouselStyle.swift */; };
 		79F7E8BE2845FA0700AB778C /* OSKUICarouselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8AE2845FA0600AB778C /* OSKUICarouselApp.swift */; };
 		79F7E8BF2845FA0700AB778C /* OSKUICarouselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8AE2845FA0600AB778C /* OSKUICarouselApp.swift */; };
 		79F7E8C02845FA0700AB778C /* OSKUIContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8AF2845FA0600AB778C /* OSKUIContentView.swift */; };
@@ -222,7 +224,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				79F7E8C12845FA0700AB778C /* OSKUIContentView.swift in Sources */,
+				791423C628465F9200195225 /* OSKUIMyCarouselStyle.swift in Sources */,
 				79F7E8BF2845FA0700AB778C /* OSKUICarouselApp.swift in Sources */,
+				791423C528465F8D00195225 /* OSKUIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

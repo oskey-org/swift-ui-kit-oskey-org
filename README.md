@@ -72,11 +72,16 @@ struct ContentView: View {
           .clipShape(RoundedRectangle(cornerRadius: 8))
           .shadow(color: .gray, radius: 2, x: 1, y: 1)
       }
-      .oskuiCarouselStyle(OSKUIMyCarouselStyle())
       .padding(.vertical)
     }
 }
+```
 
+## Styling your carousel
+
+Styling the carousel is done by implementing the `OSKUICarouselStyle` protocol:
+
+```swift
 class OSKUIMyCarouselStyle: OSKUICarouselStyle {
     func makeBody(configuration: OSKUIConfiguration) -> some View {
         VStack(spacing: 16) {
@@ -103,7 +108,49 @@ class OSKUIMyCarouselStyle: OSKUICarouselStyle {
 }
 ```
 
-## Styling your carousel
+Then, in the above example, add the modifier
+`.oskuiCarouselStyle(OSKUIMyCarouselStyle())`:
+
+```swift
+
+[...]
+
+struct ContentView: View {
+    let colors = [
+        ColorItem(name: "Red", color: .red),
+        ColorItem(name: "Green", color: .green),
+        ColorItem(name: "Blue", color: .blue),
+    ]
+
+    @State private var currentIndex = 0
+
+    var body: some View {
+      OSKUICarousel(
+          colors,
+          index: $currentIndex,
+          spacing: 16,
+          headspace: 16,
+          sidesScaling: 0.8,
+          isWrap: false,
+          autoScroll: .active(5),
+          allowSwipe: true,
+          proxy: proxy
+      ) { color in
+          VStack {
+              color.color
+                  .aspectRatio(16/9, contentMode: .fit)
+              Text("**Color:** \(color.name)")
+                  .padding()
+          }
+          .background(.white)
+          .clipShape(RoundedRectangle(cornerRadius: 8))
+          .shadow(color: .gray, radius: 2, x: 1, y: 1)
+      }
+      .oskuiCarouselStyle(OSKUIMyCarouselStyle())
+      .padding(.vertical)
+    }
+}
+```
 
 ## Dependencies
 
