@@ -1,3 +1,5 @@
+[![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+
 # OSKUICarouselAPP - A demo carousel app
 
 Copyright (c) 2022, OSkey SAS. MIT License
