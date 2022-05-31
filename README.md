@@ -11,7 +11,7 @@ Copyright (c) 2022 OSkey SAS. MIT License.
 | Platform |  Minimal version |  Comments                |
 | :------: | :--------------: | ------------------------ |
 |  macOS   |        12        | Only tested on macOS v12 |
-|   iOS    |        15        | Only test on iOS v15     |
+|   iOS    |        15        | Only tested on iOS v15   |
 
 ## Adding to your project
 
