@@ -165,9 +165,10 @@ An example can be found [here](./Example/OSKUICarouselApp/).
 This example is inspired by:
 
 - [A carousel view for SwiftUI](https://iosexample.com/a-carousel-view-for-swiftui/):
-  A carousel implementation example
+  A carousel implementation example.
 - [SwiftUI Custom Styling](https://swiftui-lab.com/custom-styling/): An example
-  of custom view with styling (like for Button), with an [example](https://gist.github.com/swiftui-lab/4469338fd099285aed2d1fd00f5da745)
+  of custom view with styling (like for Button), with an 
+  [example](https://gist.github.com/swiftui-lab/4469338fd099285aed2d1fd00f5da745).
 
 ## Contributions
 
