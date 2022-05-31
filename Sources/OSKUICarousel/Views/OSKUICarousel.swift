@@ -33,11 +33,16 @@ import SwiftUI
 ///   - `autoScroll`: Set to `.active(_:)` or `.inactive`the autoscrolling. When set to
 ///     `.active(_ timeInterval :TimeInterval)`, it scrolls automatically, every
 ///     `timeInterval` second(s). The default is `.inactive`.
+///   - `allowSwipe`: Allow user to swipe left or right
 ///
-/// The style can also be defined using ``View:oskuiCarouselStyle(_:)``.
+/// The style can also be defined using ``oskuiCarouselStyle(_:)``.
+///
+/// This control relies on the parent view been bound, therefore, if used inside an unbound view (like
+/// ``ScrollView``), a ``GeometryProxy`` must be provided.///
 ///
 public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable, OSKUIContent: View> : View {
     private let content: (OSKUIData.Element) -> OSKUIContent
+    private let proxy: GeometryProxy?
 
     @ObservedObject private var viewModel: OSKUICarouselViewModel<OSKUIData, OSKUIID>
 
@@ -59,6 +64,8 @@ public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable
     ///   - autoScroll: Set to `.active(_:)` or `.inactive`the autoscrolling. When set to
     ///     `.active(_ timeInterval :TimeInterval)`, it scrolls automatically, every
     ///     `timeInterval` second(s). The default is `.inactive`.
+    ///   - allowSwipe: Allow user to swipe left or right
+    ///   - proxy: The geometry proxy when placed in unbound container (like ``ScrollView``)
     ///   - content: A block generated based on a given `OSKUIData.Element`.
     ///
     public init(
@@ -70,7 +77,8 @@ public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable
         sidesScaling: CGFloat = 0.8,
         isWrap: Bool = false,
         autoScroll: OSKUICarouselAutoScroll = .inactive,
-        canMove: Bool = true,
+        allowSwipe: Bool = true,
+        proxy: GeometryProxy? = nil,
         @ViewBuilder content: @escaping (OSKUIData.Element) -> OSKUIContent
     ) {
         self.viewModel = OSKUICarouselViewModel(
@@ -82,9 +90,13 @@ public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable
             sidesScaling: sidesScaling,
             isWrap: isWrap,
             autoScroll: autoScroll,
-            canMove: canMove
+            allowSwipe: allowSwipe
         )
         self.content = content
+        self.proxy = proxy
+        if let proxy = proxy {
+            viewModel.viewSize = proxy.size
+        }
     }
     
     // MARK: - Private
@@ -98,7 +110,7 @@ public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable
                 HStack(spacing: viewModel.spacing) {
                     ForEach(viewModel.data, id: viewModel.dataId) {
                         content($0)
-                            .frame(width: viewModel.itemWidth)
+                            .frame(minWidth: viewModel.itemWidth)
                             .scaleEffect(x: 1, y: viewModel.itemScaling($0), anchor: .center)
                     }
                 }
@@ -124,9 +136,15 @@ public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable
     /// Generate the body
     ///
     public var body: some View {
-        GeometryReader { proxy -> AnyView in
-            viewModel.viewSize = proxy.size
-            return AnyView(generateContent(proxy: proxy))
+        ZStack {
+            if let proxy = proxy {
+                AnyView(generateContent(proxy: proxy))
+            } else {
+                GeometryReader { proxy -> AnyView in
+                    viewModel.viewSize = proxy.size
+                    return AnyView(generateContent(proxy: proxy))
+                }
+            }
         }
     }
 }
@@ -148,6 +166,8 @@ extension OSKUICarousel where OSKUIID == OSKUIData.Element.ID, OSKUIData.Element
     ///   - autoScroll: Set to `.active(_:)` or `.inactive`the autoscrolling. When set to
     ///     `.active(_ timeInterval :TimeInterval)`, it scrolls automatically, every
     ///     `timeInterval` second(s). The default is `.inactive`.
+    ///   - allowSwipe: Allow user to swipe left or right
+    ///   - proxy: The geometry proxy when placed in unbound container (like ``ScrollView``)
     ///   - content: A block generated based on a given `OSKUIData.Element`.
     ///
     ///
@@ -159,7 +179,8 @@ extension OSKUICarousel where OSKUIID == OSKUIData.Element.ID, OSKUIData.Element
         sidesScaling: CGFloat = 0.8,
         isWrap: Bool = false,
         autoScroll: OSKUICarouselAutoScroll = .inactive,
-        canMove: Bool = true,
+        allowSwipe: Bool = true,
+        proxy: GeometryProxy? = nil,
         @ViewBuilder content: @escaping (OSKUIData.Element) -> OSKUIContent
     ) {
         self.viewModel = OSKUICarouselViewModel(
@@ -170,9 +191,13 @@ extension OSKUICarousel where OSKUIID == OSKUIData.Element.ID, OSKUIData.Element
             sidesScaling: sidesScaling,
             isWrap: isWrap,
             autoScroll: autoScroll,
-            canMove: canMove
+            allowSwipe: allowSwipe
         )
         self.content = content
+        self.proxy = proxy
+        if let proxy = proxy {
+            viewModel.viewSize = proxy.size
+        }
     }
 }
 
@@ -199,7 +224,8 @@ struct OSKUICarousel_LibraryContent: LibraryContentProvider {
                 headspace: 10,
                 sidesScaling: 0.8,
                 isWrap: false,
-                autoScroll: .inactive
+                autoScroll: .inactive,
+                allowSwipe: true
             ) { _ in },
             title: "OSkey UI - Carousel (full)",
             category: .control

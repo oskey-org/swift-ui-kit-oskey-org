@@ -23,9 +23,9 @@
 
 import SwiftUI
 
-public struct OSKUICarouselStyleConfiguration {
-    public let content: AnyView
-    public let maxWidth: CGFloat
-    public let itemMaxWidth: CGFloat
-    public let dots: [OSKUICarouselDot]
+struct OSKUIColor: Identifiable {
+    let name: String
+    let color: Color
+    
+    var id: String { return name }
 }

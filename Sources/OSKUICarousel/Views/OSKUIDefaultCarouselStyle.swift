@@ -26,7 +26,7 @@ import SwiftUI
 /// Defines the default carousel style
 ///
 public class OSKUIDefaultCarouselStyle: OSKUICarouselStyle {
-    @Environment(\.colorScheme) var currentMode
+    public init() {}
     
     public func makeBody(configuration: OSKUIConfiguration) -> some View {
         VStack(spacing: 16) {
@@ -38,7 +38,7 @@ public class OSKUIDefaultCarouselStyle: OSKUICarouselStyle {
                         .resizable()
                         .frame(width: dot.isActiveItem ? 8 : 4, height: dot.isActiveItem ? 8 : 4, alignment: .center)
                         .scaledToFit()
-                        .foregroundColor(dot.isActiveItem ? .gray : .white)
+                        .foregroundColor(dot.isActiveItem ? .accentColor : .white)
                 }
             }
             .padding(8)

@@ -37,7 +37,7 @@ class OSKUICarouselViewModel<OSKUIData: RandomAccessCollection, OSKUIID: Hashabl
     private let _isWrap: Bool
     private let _sidesScaling: CGFloat
     private let _autoScroll: OSKUICarouselAutoScroll
-    private let _canMove: Bool
+    private let _allowSwipe: Bool
     
     // MARK: - Variables
     var viewSize: CGSize = .zero
@@ -60,7 +60,7 @@ class OSKUICarouselViewModel<OSKUIData: RandomAccessCollection, OSKUIID: Hashabl
         sidesScaling: CGFloat,
         isWrap: Bool,
         autoScroll: OSKUICarouselAutoScroll,
-        canMove: Bool
+                allowSwipe: Bool
     ) {
         guard index.wrappedValue < data.count else {
             fatalError("The index should be less than the count of data ")
@@ -73,7 +73,7 @@ class OSKUICarouselViewModel<OSKUIData: RandomAccessCollection, OSKUIID: Hashabl
         self._isWrap = isWrap
         self._sidesScaling = sidesScaling
         self._autoScroll = autoScroll
-        self._canMove = canMove
+        self._allowSwipe =         allowSwipe
         
         if data.count > 1 && isWrap {
             activeIndex = index.wrappedValue + 1
@@ -134,7 +134,7 @@ extension OSKUICarouselViewModel where OSKUIID == OSKUIData.Element.ID, OSKUIDat
         sidesScaling: CGFloat,
         isWrap: Bool,
         autoScroll: OSKUICarouselAutoScroll,
-        canMove: Bool
+        allowSwipe: Bool
     ) {
         self.init(
             data,
@@ -145,7 +145,7 @@ extension OSKUICarouselViewModel where OSKUIID == OSKUIData.Element.ID, OSKUIDat
             sidesScaling: sidesScaling,
             isWrap: isWrap,
             autoScroll: autoScroll,
-            canMove: canMove
+                    allowSwipe: allowSwipe
         )
     }
 }
@@ -291,7 +291,7 @@ extension OSKUICarouselViewModel {
     }
     
     private func dragChanged(_ value: DragGesture.Value) {
-        guard _canMove else { return }
+        guard _allowSwipe else { return }
         
         isAnimatedOffset = true
         
@@ -313,7 +313,7 @@ extension OSKUICarouselViewModel {
     }
     
     private func dragEnded(_ value: DragGesture.Value) {
-        guard _canMove else { return }
+        guard _allowSwipe else { return }
         /// reset drag offset
         dragOffset = .zero
         

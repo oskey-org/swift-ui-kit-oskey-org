@@ -7,32 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		798CB04C284550B000472207 /* OSKUICarouselAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798CB03C284550AE00472207 /* OSKUICarouselAppApp.swift */; };
-		798CB04D284550B000472207 /* OSKUICarouselAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798CB03C284550AE00472207 /* OSKUICarouselAppApp.swift */; };
-		798CB04E284550B000472207 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798CB03D284550AE00472207 /* ContentView.swift */; };
-		798CB04F284550B000472207 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798CB03D284550AE00472207 /* ContentView.swift */; };
-		798CB050284550B000472207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798CB03E284550B000472207 /* Assets.xcassets */; };
-		798CB051284550B000472207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 798CB03E284550B000472207 /* Assets.xcassets */; };
+		79F7E8BE2845FA0700AB778C /* OSKUICarouselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8AE2845FA0600AB778C /* OSKUICarouselApp.swift */; };
+		79F7E8BF2845FA0700AB778C /* OSKUICarouselApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8AE2845FA0600AB778C /* OSKUICarouselApp.swift */; };
+		79F7E8C02845FA0700AB778C /* OSKUIContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8AF2845FA0600AB778C /* OSKUIContentView.swift */; };
+		79F7E8C12845FA0700AB778C /* OSKUIContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8AF2845FA0600AB778C /* OSKUIContentView.swift */; };
+		79F7E8C22845FA0700AB778C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F7E8B02845FA0700AB778C /* Assets.xcassets */; };
+		79F7E8C32845FA0700AB778C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F7E8B02845FA0700AB778C /* Assets.xcassets */; };
+		79F7E8CE2845FA5900AB778C /* OSKUICarousel in Frameworks */ = {isa = PBXBuildFile; productRef = 79F7E8CD2845FA5900AB778C /* OSKUICarousel */; };
+		79F7E8D42845FCCA00AB778C /* OSKUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8D32845FCCA00AB778C /* OSKUIColor.swift */; };
+		79F7E8D628461E9400AB778C /* OSKUIMyCarouselStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E8D528461E9400AB778C /* OSKUIMyCarouselStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		798CB03C284550AE00472207 /* OSKUICarouselAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSKUICarouselAppApp.swift; sourceTree = "<group>"; };
-		798CB03D284550AE00472207 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		798CB03E284550B000472207 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		798CB043284550B000472207 /* OSKUICarouselApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSKUICarouselApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		798CB049284550B000472207 /* OSKUICarouselApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSKUICarouselApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		798CB04B284550B000472207 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		79F7E8AE2845FA0600AB778C /* OSKUICarouselApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSKUICarouselApp.swift; sourceTree = "<group>"; };
+		79F7E8AF2845FA0600AB778C /* OSKUIContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSKUIContentView.swift; sourceTree = "<group>"; };
+		79F7E8B02845FA0700AB778C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		79F7E8B52845FA0700AB778C /* OSKUICarouselApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSKUICarouselApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F7E8BB2845FA0700AB778C /* OSKUICarouselApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSKUICarouselApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F7E8BD2845FA0700AB778C /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		79F7E8D32845FCCA00AB778C /* OSKUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSKUIColor.swift; sourceTree = "<group>"; };
+		79F7E8D528461E9400AB778C /* OSKUIMyCarouselStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSKUIMyCarouselStyle.swift; sourceTree = "<group>"; };
+		79F7E8D728465AF300AB778C /* swift-ui-carousel-oskey-org */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swift-ui-carousel-oskey-org"; path = ../..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		798CB040284550B000472207 /* Frameworks */ = {
+		79F7E8B22845FA0700AB778C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F7E8CE2845FA5900AB778C /* OSKUICarousel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		798CB046284550B000472207 /* Frameworks */ = {
+		79F7E8B82845FA0700AB778C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,69 +49,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		798CB036284550AD00472207 = {
+		79F7E8A82845FA0600AB778C = {
 			isa = PBXGroup;
 			children = (
-				798CB03B284550AE00472207 /* Shared */,
-				798CB04A284550B000472207 /* macOS */,
-				798CB044284550B000472207 /* Products */,
+				79F7E8D728465AF300AB778C /* swift-ui-carousel-oskey-org */,
+				79F7E8AD2845FA0600AB778C /* Shared */,
+				79F7E8BC2845FA0700AB778C /* macOS */,
+				79F7E8B62845FA0700AB778C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		798CB03B284550AE00472207 /* Shared */ = {
+		79F7E8AD2845FA0600AB778C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				798CB03C284550AE00472207 /* OSKUICarouselAppApp.swift */,
-				798CB03D284550AE00472207 /* ContentView.swift */,
-				798CB03E284550B000472207 /* Assets.xcassets */,
+				79F7E8B02845FA0700AB778C /* Assets.xcassets */,
+				79F7E8AE2845FA0600AB778C /* OSKUICarouselApp.swift */,
+				79F7E8D12845FC9D00AB778C /* Models */,
+				79F7E8D22845FCA400AB778C /* Views */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		798CB044284550B000472207 /* Products */ = {
+		79F7E8B62845FA0700AB778C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				798CB043284550B000472207 /* OSKUICarouselApp.app */,
-				798CB049284550B000472207 /* OSKUICarouselApp.app */,
+				79F7E8B52845FA0700AB778C /* OSKUICarouselApp.app */,
+				79F7E8BB2845FA0700AB778C /* OSKUICarouselApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		798CB04A284550B000472207 /* macOS */ = {
+		79F7E8BC2845FA0700AB778C /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				798CB04B284550B000472207 /* macOS.entitlements */,
+				79F7E8BD2845FA0700AB778C /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		79F7E8D12845FC9D00AB778C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				79F7E8D32845FCCA00AB778C /* OSKUIColor.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		79F7E8D22845FCA400AB778C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				79F7E8AF2845FA0600AB778C /* OSKUIContentView.swift */,
+				79F7E8D528461E9400AB778C /* OSKUIMyCarouselStyle.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		798CB042284550B000472207 /* OSKUICarouselApp (iOS) */ = {
+		79F7E8B42845FA0700AB778C /* OSKUICarouselApp (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 798CB054284550B000472207 /* Build configuration list for PBXNativeTarget "OSKUICarouselApp (iOS)" */;
+			buildConfigurationList = 79F7E8C62845FA0700AB778C /* Build configuration list for PBXNativeTarget "OSKUICarouselApp (iOS)" */;
 			buildPhases = (
-				798CB03F284550B000472207 /* Sources */,
-				798CB040284550B000472207 /* Frameworks */,
-				798CB041284550B000472207 /* Resources */,
+				79F7E8B12845FA0700AB778C /* Sources */,
+				79F7E8B22845FA0700AB778C /* Frameworks */,
+				79F7E8B32845FA0700AB778C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "OSKUICarouselApp (iOS)";
+			packageProductDependencies = (
+				79F7E8CD2845FA5900AB778C /* OSKUICarousel */,
+			);
 			productName = "OSKUICarouselApp (iOS)";
-			productReference = 798CB043284550B000472207 /* OSKUICarouselApp.app */;
+			productReference = 79F7E8B52845FA0700AB778C /* OSKUICarouselApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		798CB048284550B000472207 /* OSKUICarouselApp (macOS) */ = {
+		79F7E8BA2845FA0700AB778C /* OSKUICarouselApp (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 798CB057284550B000472207 /* Build configuration list for PBXNativeTarget "OSKUICarouselApp (macOS)" */;
+			buildConfigurationList = 79F7E8C92845FA0700AB778C /* Build configuration list for PBXNativeTarget "OSKUICarouselApp (macOS)" */;
 			buildPhases = (
-				798CB045284550B000472207 /* Sources */,
-				798CB046284550B000472207 /* Frameworks */,
-				798CB047284550B000472207 /* Resources */,
+				79F7E8B72845FA0700AB778C /* Sources */,
+				79F7E8B82845FA0700AB778C /* Frameworks */,
+				79F7E8B92845FA0700AB778C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -112,28 +141,30 @@
 			);
 			name = "OSKUICarouselApp (macOS)";
 			productName = "OSKUICarouselApp (macOS)";
-			productReference = 798CB049284550B000472207 /* OSKUICarouselApp.app */;
+			productReference = 79F7E8BB2845FA0700AB778C /* OSKUICarouselApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		798CB037284550AD00472207 /* Project object */ = {
+		79F7E8A92845FA0600AB778C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = OSKUI;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
+				ORGANIZATIONNAME = "OSkey SAS";
 				TargetAttributes = {
-					798CB042284550B000472207 = {
+					79F7E8B42845FA0700AB778C = {
 						CreatedOnToolsVersion = 13.4;
 					};
-					798CB048284550B000472207 = {
+					79F7E8BA2845FA0700AB778C = {
 						CreatedOnToolsVersion = 13.4;
 					};
 				};
 			};
-			buildConfigurationList = 798CB03A284550AD00472207 /* Build configuration list for PBXProject "OSKUICarouselApp" */;
+			buildConfigurationList = 79F7E8AC2845FA0600AB778C /* Build configuration list for PBXProject "OSKUICarouselApp" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -141,59 +172,64 @@
 				en,
 				Base,
 			);
-			mainGroup = 798CB036284550AD00472207;
-			productRefGroup = 798CB044284550B000472207 /* Products */;
+			mainGroup = 79F7E8A82845FA0600AB778C;
+			packageReferences = (
+				79F7E8CC2845FA5900AB778C /* XCRemoteSwiftPackageReference "swift-ui-carousel-oskey-org" */,
+			);
+			productRefGroup = 79F7E8B62845FA0700AB778C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				798CB042284550B000472207 /* OSKUICarouselApp (iOS) */,
-				798CB048284550B000472207 /* OSKUICarouselApp (macOS) */,
+				79F7E8B42845FA0700AB778C /* OSKUICarouselApp (iOS) */,
+				79F7E8BA2845FA0700AB778C /* OSKUICarouselApp (macOS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		798CB041284550B000472207 /* Resources */ = {
+		79F7E8B32845FA0700AB778C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				798CB050284550B000472207 /* Assets.xcassets in Resources */,
+				79F7E8C22845FA0700AB778C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		798CB047284550B000472207 /* Resources */ = {
+		79F7E8B92845FA0700AB778C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				798CB051284550B000472207 /* Assets.xcassets in Resources */,
+				79F7E8C32845FA0700AB778C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		798CB03F284550B000472207 /* Sources */ = {
+		79F7E8B12845FA0700AB778C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				798CB04E284550B000472207 /* ContentView.swift in Sources */,
-				798CB04C284550B000472207 /* OSKUICarouselAppApp.swift in Sources */,
+				79F7E8D42845FCCA00AB778C /* OSKUIColor.swift in Sources */,
+				79F7E8D628461E9400AB778C /* OSKUIMyCarouselStyle.swift in Sources */,
+				79F7E8C02845FA0700AB778C /* OSKUIContentView.swift in Sources */,
+				79F7E8BE2845FA0700AB778C /* OSKUICarouselApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		798CB045284550B000472207 /* Sources */ = {
+		79F7E8B72845FA0700AB778C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				798CB04F284550B000472207 /* ContentView.swift in Sources */,
-				798CB04D284550B000472207 /* OSKUICarouselAppApp.swift in Sources */,
+				79F7E8C12845FA0700AB778C /* OSKUIContentView.swift in Sources */,
+				79F7E8BF2845FA0700AB778C /* OSKUICarouselApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		798CB052284550B000472207 /* Debug */ = {
+		79F7E8C42845FA0700AB778C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -251,7 +287,7 @@
 			};
 			name = Debug;
 		};
-		798CB053284550B000472207 /* Release */ = {
+		79F7E8C52845FA0700AB778C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -302,13 +338,14 @@
 			};
 			name = Release;
 		};
-		798CB055284550B000472207 /* Debug */ = {
+		79F7E8C72845FA0700AB778C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DE65J7Y35D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -327,17 +364,18 @@
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		798CB056284550B000472207 /* Release */ = {
+		79F7E8C82845FA0700AB778C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DE65J7Y35D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -356,12 +394,12 @@
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		798CB058284550B000472207 /* Debug */ = {
+		79F7E8CA2845FA0700AB778C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -387,7 +425,7 @@
 			};
 			name = Debug;
 		};
-		798CB059284550B000472207 /* Release */ = {
+		79F7E8CB2845FA0700AB778C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -416,34 +454,53 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		798CB03A284550AD00472207 /* Build configuration list for PBXProject "OSKUICarouselApp" */ = {
+		79F7E8AC2845FA0600AB778C /* Build configuration list for PBXProject "OSKUICarouselApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				798CB052284550B000472207 /* Debug */,
-				798CB053284550B000472207 /* Release */,
+				79F7E8C42845FA0700AB778C /* Debug */,
+				79F7E8C52845FA0700AB778C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		798CB054284550B000472207 /* Build configuration list for PBXNativeTarget "OSKUICarouselApp (iOS)" */ = {
+		79F7E8C62845FA0700AB778C /* Build configuration list for PBXNativeTarget "OSKUICarouselApp (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				798CB055284550B000472207 /* Debug */,
-				798CB056284550B000472207 /* Release */,
+				79F7E8C72845FA0700AB778C /* Debug */,
+				79F7E8C82845FA0700AB778C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		798CB057284550B000472207 /* Build configuration list for PBXNativeTarget "OSKUICarouselApp (macOS)" */ = {
+		79F7E8C92845FA0700AB778C /* Build configuration list for PBXNativeTarget "OSKUICarouselApp (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				798CB058284550B000472207 /* Debug */,
-				798CB059284550B000472207 /* Release */,
+				79F7E8CA2845FA0700AB778C /* Debug */,
+				79F7E8CB2845FA0700AB778C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		79F7E8CC2845FA5900AB778C /* XCRemoteSwiftPackageReference "swift-ui-carousel-oskey-org" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/oskey-org/swift-ui-carousel-oskey-org";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		79F7E8CD2845FA5900AB778C /* OSKUICarousel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79F7E8CC2845FA5900AB778C /* XCRemoteSwiftPackageReference "swift-ui-carousel-oskey-org" */;
+			productName = OSKUICarousel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 798CB037284550AD00472207 /* Project object */;
+	rootObject = 79F7E8A92845FA0600AB778C /* Project object */;
 }

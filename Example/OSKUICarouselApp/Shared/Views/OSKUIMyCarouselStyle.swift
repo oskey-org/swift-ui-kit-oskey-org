@@ -22,10 +22,29 @@
 //
 
 import SwiftUI
+import OSKUICarousel
 
-public struct OSKUICarouselStyleConfiguration {
-    public let content: AnyView
-    public let maxWidth: CGFloat
-    public let itemMaxWidth: CGFloat
-    public let dots: [OSKUICarouselDot]
+class OSKUIMyCarouselStyle: OSKUICarouselStyle {    
+    func makeBody(configuration: OSKUIConfiguration) -> some View {
+        VStack(spacing: 16) {
+            configuration.content
+            
+            HStack(spacing: 4) {
+                ForEach(configuration.dots) { dot in
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .frame(width: dot.isActiveItem ? 8 : 4, height: dot.isActiveItem ? 8 : 4, alignment: .center)
+                        .scaledToFit()
+                        .foregroundColor(dot.isActiveItem ? .red : .white)
+                }
+            }
+            .padding(8)
+            .frame(maxWidth: configuration.itemMaxWidth)
+            .background(Color.red.opacity(0.13))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .scaledToFit()
+        }
+        .padding(.vertical)
+        .background(Color.blue.opacity(0.13))
+    }
 }

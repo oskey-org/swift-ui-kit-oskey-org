@@ -44,7 +44,7 @@ public protocol OSKUICarouselStyle {
     typealias OSKUIConfiguration = OSKUICarouselStyleConfiguration
 }
 
-extension OSKUICarouselStyle {
+extension OSKUICarouselStyle {    
     func makeBodyTypeErased(configuration: Self.OSKUIConfiguration) -> AnyView {
         AnyView(self.makeBody(configuration: configuration))
     }
