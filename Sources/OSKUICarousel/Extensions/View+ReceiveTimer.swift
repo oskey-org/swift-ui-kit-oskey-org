@@ -21,15 +21,14 @@
 // SOFTWARE.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 @available(iOS 15.0, OSX 12, *)
 typealias OSKUITimePublisher = Publishers.Autoconnect<Timer.TimerPublisher>
 
 @available(iOS 15.0, OSX 12, *)
 extension View {
-    
     func onReceive(timer: OSKUITimePublisher?, perform action: @escaping (Timer.TimerPublisher.Output) -> Void) -> some View {
         Group {
             if let timer = timer {

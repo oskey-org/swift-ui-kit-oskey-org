@@ -40,16 +40,16 @@ import SwiftUI
 /// This control relies on the parent view been bound, therefore, if used inside an unbound view (like
 /// ``ScrollView``), a ``GeometryProxy`` must be provided.///
 ///
-public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable, OSKUIContent: View> : View {
+public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable, OSKUIContent: View>: View {
     private let content: (OSKUIData.Element) -> OSKUIContent
     private let proxy: GeometryProxy?
 
     @ObservedObject private var viewModel: OSKUICarouselViewModel<OSKUIData, OSKUIID>
 
     @Environment(\.oskuiCarouselStyle) private var style: OSKUIAnyCarouselStyle
-    
+
     // MARK: - Initializer
-    
+
     /// Creates an instance that uniquely identifies and creates views across updates based on the provided
     /// key path to the underlying data’s identifier.
     ///
@@ -81,7 +81,7 @@ public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable
         proxy: GeometryProxy? = nil,
         @ViewBuilder content: @escaping (OSKUIData.Element) -> OSKUIContent
     ) {
-        self.viewModel = OSKUICarouselViewModel(
+        viewModel = OSKUICarouselViewModel(
             data,
             id: id,
             index: index,
@@ -98,19 +98,19 @@ public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable
             viewModel.viewSize = proxy.size
         }
     }
-    
+
     // MARK: - Private
 
     /// Generate the content (fill the configuration, then call the style)
     ///
     private func generateContent(proxy: GeometryProxy) -> some View {
-        var index: Int = 0
+        var index = 0
         let configuration = OSKUICarouselStyleConfiguration(
             content: AnyView(
                 HStack(spacing: viewModel.spacing) {
                     ForEach(viewModel.data, id: viewModel.dataId) {
                         content($0)
-                            .frame(minWidth: viewModel.itemWidth)
+                            .frame(width: viewModel.itemWidth)
                             .scaleEffect(x: 1, y: viewModel.itemScaling($0), anchor: .center)
                     }
                 }
@@ -129,8 +129,8 @@ public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable
                 return dot
             }
         )
-        
-        return  style.makeBody(configuration: configuration)
+
+        return style.makeBody(configuration: configuration)
     }
 
     /// Generate the body
@@ -150,8 +150,7 @@ public struct OSKUICarousel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable
 }
 
 @available(iOS 15.0, OSX 11.0, *)
-extension OSKUICarousel where OSKUIID == OSKUIData.Element.ID, OSKUIData.Element: Identifiable {
-
+public extension OSKUICarousel where OSKUIID == OSKUIData.Element.ID, OSKUIData.Element: Identifiable {
     /// Creates an instance that uniquely identifies and creates views across updates based on the identity
     /// of the underlying data.
     ///
@@ -171,7 +170,7 @@ extension OSKUICarousel where OSKUIID == OSKUIData.Element.ID, OSKUIData.Element
     ///   - content: A block generated based on a given `OSKUIData.Element`.
     ///
     ///
-    public init(
+    init(
         _ data: OSKUIData,
         index: Binding<Int> = .constant(0),
         spacing: CGFloat = 16,
@@ -183,7 +182,7 @@ extension OSKUICarousel where OSKUIID == OSKUIData.Element.ID, OSKUIData.Element
         proxy: GeometryProxy? = nil,
         @ViewBuilder content: @escaping (OSKUIData.Element) -> OSKUIContent
     ) {
-        self.viewModel = OSKUICarouselViewModel(
+        viewModel = OSKUICarouselViewModel(
             data,
             index: index,
             spacing: spacing,
@@ -242,7 +241,7 @@ struct OSKUICarousel_LibraryContent: LibraryContentProvider {
             category: .control
         )
     }
-    
+
     struct _Item: Identifiable {
         let id = UUID()
         let color: Color

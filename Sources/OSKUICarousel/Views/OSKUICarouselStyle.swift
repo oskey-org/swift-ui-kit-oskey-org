@@ -33,7 +33,7 @@ import SwiftUI
 public protocol OSKUICarouselStyle {
     /// A view that represents the body of a carousel.
     ///
-    associatedtype OSKUIBody : View
+    associatedtype OSKUIBody: View
 
     /// Creates a view that represents the body of a button.
     ///
@@ -44,8 +44,8 @@ public protocol OSKUICarouselStyle {
     typealias OSKUIConfiguration = OSKUICarouselStyleConfiguration
 }
 
-extension OSKUICarouselStyle {    
+extension OSKUICarouselStyle {
     func makeBodyTypeErased(configuration: Self.OSKUIConfiguration) -> AnyView {
-        AnyView(self.makeBody(configuration: configuration))
+        AnyView(makeBody(configuration: configuration))
     }
 }

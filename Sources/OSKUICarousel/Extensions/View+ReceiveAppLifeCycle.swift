@@ -23,27 +23,25 @@
 
 import SwiftUI
 
-
 #if os(macOS)
-import AppKit
-typealias OSKUIApplication = NSApplication
+    import AppKit
+    typealias OSKUIApplication = NSApplication
 #else
-import UIKit
-typealias OSKUIApplication = UIApplication
+    import UIKit
+    typealias OSKUIApplication = UIApplication
 #endif
 
 @available(iOS 15.0, OSX 12, *)
 struct AppLifeCycleModifier: ViewModifier {
-    
     let active = NotificationCenter.default.publisher(for: OSKUIApplication.didBecomeActiveNotification)
     let inactive = NotificationCenter.default.publisher(for: OSKUIApplication.willResignActiveNotification)
-    
-    private let action: (Bool) -> ()
-    
-    init(_ action: @escaping (Bool) -> ()) {
+
+    private let action: (Bool) -> Void
+
+    init(_ action: @escaping (Bool) -> Void) {
         self.action = action
     }
-    
+
     func body(content: Content) -> some View {
         content
             .onAppear() /// `onReceive` will not work in the Modifier Without `onAppear`
@@ -58,7 +56,7 @@ struct AppLifeCycleModifier: ViewModifier {
 
 @available(iOS 15.0, OSX 12, *)
 extension View {
-    func onReceiveAppLifeCycle(perform action: @escaping (Bool) -> ()) -> some View {
-        self.modifier(AppLifeCycleModifier(action))
+    func onReceiveAppLifeCycle(perform action: @escaping (Bool) -> Void) -> some View {
+        modifier(AppLifeCycleModifier(action))
     }
 }

@@ -21,14 +21,13 @@
 // SOFTWARE.
 //
 
-
-import SwiftUI
 import Combine
+import SwiftUI
 
 @available(iOS 15.0, OSX 11.0, *)
 class OSKUICarouselViewModel<OSKUIData: RandomAccessCollection, OSKUIID: Hashable>: ObservableObject {
-    
     // MARK: - Parameters
+
     @Binding private var index: Int
     private let _data: OSKUIData
     private let _dataId: KeyPath<OSKUIData.Element, OSKUIID>
@@ -38,19 +37,23 @@ class OSKUICarouselViewModel<OSKUIData: RandomAccessCollection, OSKUIID: Hashabl
     private let _sidesScaling: CGFloat
     private let _autoScroll: OSKUICarouselAutoScroll
     private let _allowSwipe: Bool
-    
+
     // MARK: - Variables
+
     var viewSize: CGSize = .zero
-    
+
     // MARK: - Publishers
+
     @Published var activeIndex: Int = 0
     @Published var dragOffset: CGFloat = .zero
-    
+
     // MARK: - Private vars
+
     private var timing: TimeInterval = 0
     private var isTimerActive = true
-    
+
     // MARK: - Initializer
+
     init(
         _ data: OSKUIData,
         id: KeyPath<OSKUIData.Element, OSKUIID>,
@@ -60,30 +63,30 @@ class OSKUICarouselViewModel<OSKUIData: RandomAccessCollection, OSKUIID: Hashabl
         sidesScaling: CGFloat,
         isWrap: Bool,
         autoScroll: OSKUICarouselAutoScroll,
-                allowSwipe: Bool
+        allowSwipe: Bool
     ) {
         guard index.wrappedValue < data.count else {
             fatalError("The index should be less than the count of data ")
         }
-        
-        self._data = data
-        self._dataId = id
-        self._spacing = spacing
-        self._headspace = headspace
-        self._isWrap = isWrap
-        self._sidesScaling = sidesScaling
-        self._autoScroll = autoScroll
-        self._allowSwipe =         allowSwipe
-        
-        if data.count > 1 && isWrap {
+
+        _data = data
+        _dataId = id
+        _spacing = spacing
+        _headspace = headspace
+        _isWrap = isWrap
+        _sidesScaling = sidesScaling
+        _autoScroll = autoScroll
+        _allowSwipe = allowSwipe
+
+        if data.count > 1, isWrap {
             activeIndex = index.wrappedValue + 1
         } else {
             activeIndex = index.wrappedValue
         }
-        
-        self._index = index
+
+        _index = index
     }
-    
+
 //    /// The index of the currently active subview.
 //    @Published var activeIndex: Int = 0 {
 //        willSet {
@@ -100,7 +103,7 @@ class OSKUICarouselViewModel<OSKUIData: RandomAccessCollection, OSKUIID: Hashabl
 //            changeOffset()
 //        }
 //    }
-    
+
 //    /// Offset x of the view drag.
 //    @Published var dragOffset: CGFloat = .zero
 //
@@ -121,7 +124,6 @@ class OSKUICarouselViewModel<OSKUIData: RandomAccessCollection, OSKUIID: Hashabl
     func setTimerActive(_ active: Bool) {
         isTimerActive = active
     }
-    
 }
 
 @available(iOS 15.0, OSX 11.0, *)
@@ -145,7 +147,7 @@ extension OSKUICarouselViewModel where OSKUIID == OSKUIData.Element.ID, OSKUIDat
             sidesScaling: sidesScaling,
             isWrap: isWrap,
             autoScroll: autoScroll,
-                    allowSwipe: allowSwipe
+            allowSwipe: allowSwipe
         )
     }
 }
@@ -164,33 +166,33 @@ extension OSKUICarouselViewModel {
         }
         return [_data.last!] + _data + [_data.first!] as! OSKUIData
     }
-    
+
     var dataId: KeyPath<OSKUIData.Element, OSKUIID> {
         return _dataId
     }
-    
+
     var spacing: CGFloat {
         return _spacing
     }
-    
+
     var offsetAnimation: Animation? {
         guard isWrap else {
             return .spring()
         }
         return isAnimatedOffset ? .spring() : .none
     }
-    
+
     var itemWidth: CGFloat {
         max(0, viewSize.width - defaultPadding * 2)
     }
-    
+
     var timer: OSKUITimePublisher? {
         guard autoScroll.isActive else {
             return nil
         }
         return Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     }
-    
+
     /// Defines the scaling based on whether the item is currently active or not.
     /// - Parameter item: The incoming item
     /// - Returns: scaling
@@ -201,7 +203,7 @@ extension OSKUICarouselViewModel {
         let activeItem = data[activeIndex as! OSKUIData.Index]
         return activeItem[keyPath: _dataId] == item[keyPath: _dataId] ? 1 : sidesScaling
     }
-    
+
     func isActiveItem(_ item: OSKUIData.Element) -> Bool {
         guard activeIndex < data.count else {
             return false
@@ -215,29 +217,28 @@ extension OSKUICarouselViewModel {
 
 @available(iOS 15.0, OSX 11.0, *)
 private extension OSKUICarouselViewModel {
-    
     var isWrap: Bool {
         return _data.count > 1 ? _isWrap : false
     }
-    
+
     var autoScroll: OSKUICarouselAutoScroll {
         guard _data.count > 1 else { return .inactive }
         guard case let .active(t) = _autoScroll else { return _autoScroll }
         return t > 0 ? _autoScroll : .defaultActive
     }
-    
+
     var defaultPadding: CGFloat {
         return (_headspace + spacing)
     }
-    
+
     var itemActualWidth: CGFloat {
         itemWidth + spacing
     }
-    
+
     var sidesScaling: CGFloat {
         return max(min(_sidesScaling, 1), 0)
     }
-    
+
     /// Is animated when view is in offset
     var isAnimatedOffset: Bool {
         get { UserDefaults.isAnimatedOffset }
@@ -254,17 +255,17 @@ extension OSKUICarouselViewModel {
         let activeOffset = CGFloat(activeIndex) * itemActualWidth
         return defaultPadding - activeOffset + dragOffset
     }
-    
+
     /// change offset when acitveItem changes
     private func changeOffset() {
         isAnimatedOffset = true
         guard isWrap else {
             return
         }
-        
+
         let minimumOffset = defaultPadding
         let maxinumOffset = defaultPadding - CGFloat(data.count - 1) * itemActualWidth
-        
+
         if offset == minimumOffset {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.activeIndex = self.data.count - 2
@@ -289,12 +290,12 @@ extension OSKUICarouselViewModel {
             .onChanged(dragChanged)
             .onEnded(dragEnded)
     }
-    
+
     private func dragChanged(_ value: DragGesture.Value) {
         guard _allowSwipe else { return }
-        
+
         isAnimatedOffset = true
-        
+
         /// Defines the maximum value of the drag
         /// Avoid dragging more than the values of multiple subviews at the end of the drag,
         /// and still only one subview is toggled
@@ -304,29 +305,29 @@ extension OSKUICarouselViewModel {
         } else {
             offset = max(-offset, value.translation.width)
         }
-        
+
         /// set drag offset
         dragOffset = offset
-        
+
         /// stop active timer
         isTimerActive = false
     }
-    
+
     private func dragEnded(_ value: DragGesture.Value) {
         guard _allowSwipe else { return }
         /// reset drag offset
         dragOffset = .zero
-        
+
         /// reset timing and restart active timer
         resetTiming()
         isTimerActive = true
-        
+
         /// Defines the drag threshold
         /// At the end of the drag, if the drag value exceeds the drag threshold,
         /// the active view will be toggled
         /// default is one third of subview
         let dragThreshold: CGFloat = itemWidth / 3
-        
+
         var activeIndex = self.activeIndex
         if value.translation.width > dragThreshold {
             activeIndex -= 1
@@ -342,9 +343,8 @@ extension OSKUICarouselViewModel {
 
 @available(iOS 15.0, OSX 11.0, *)
 extension OSKUICarouselViewModel {
-    
     /// timer change
-    func receiveTimer(_ value: Timer.TimerPublisher.Output) {
+    func receiveTimer(_: Timer.TimerPublisher.Output) {
         /// Ignores listen when `isTimerActive` is false.
         guard isTimerActive else {
             return
@@ -356,7 +356,7 @@ extension OSKUICarouselViewModel {
         if timing < autoScroll.interval {
             return
         }
-        
+
         if activeIndex == data.count - 1 {
             /// `isWrap` is false.
             /// Revert to the first view after scrolling to the last view
@@ -368,26 +368,23 @@ extension OSKUICarouselViewModel {
         }
         resetTiming()
     }
-    
-    
+
     /// reset counting of time
     private func resetTiming() {
         timing = 0
     }
-    
+
     /// time increments of one
     private func activeTiming() {
         timing += 1
     }
 }
 
-
 private extension UserDefaults {
-    
-    private struct Keys {
+    private enum Keys {
         static let isAnimatedOffset = "isAnimatedOffset"
     }
-    
+
     static var isAnimatedOffset: Bool {
         get {
             return UserDefaults.standard.bool(forKey: Keys.isAnimatedOffset)

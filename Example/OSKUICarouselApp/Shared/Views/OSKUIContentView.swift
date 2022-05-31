@@ -21,8 +21,8 @@
 // SOFTWARE.
 //
 
-import SwiftUI
 import OSKUICarousel
+import SwiftUI
 
 struct OSKUIContentView: View {
     let colors = [
@@ -30,10 +30,10 @@ struct OSKUIContentView: View {
         OSKUIColor(name: "Green", color: .green),
         OSKUIColor(name: "Blue", color: .blue),
     ]
-    
+
     @State private var currentIndex1 = 0
     @State private var currentIndex2 = 0
-    
+
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
@@ -45,7 +45,7 @@ struct OSKUIContentView: View {
                             Spacer()
                         }
                         .padding()
-                        
+
                         OSKUICarousel(
                             colors,
                             index: $currentIndex1,
@@ -59,7 +59,7 @@ struct OSKUIContentView: View {
                         ) { color in
                             VStack {
                                 color.color
-                                    .aspectRatio(16/9, contentMode: .fit)
+                                    .aspectRatio(16 / 9, contentMode: .fit)
                                 Text("**Color:** \(color.name)")
                                     .padding()
                             }
@@ -68,16 +68,16 @@ struct OSKUIContentView: View {
                             .shadow(color: .gray, radius: 2, x: 1, y: 1)
                         }
                         .padding(.vertical)
-                        
+
                         Divider()
-                        
+
                         HStack {
                             Text("Custom style")
                                 .font(.headline)
                             Spacer()
                         }
                         .padding()
-                        
+
                         OSKUICarousel(
                             colors,
                             index: $currentIndex2,
@@ -91,7 +91,7 @@ struct OSKUIContentView: View {
                         ) { color in
                             VStack {
                                 color.color
-                                    .aspectRatio(16/9, contentMode: .fit)
+                                    .aspectRatio(16 / 9, contentMode: .fit)
                                 Text("**Color:** \(color.name)")
                                     .padding()
                             }

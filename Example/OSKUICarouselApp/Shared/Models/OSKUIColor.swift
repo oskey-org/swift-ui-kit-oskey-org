@@ -26,6 +26,6 @@ import SwiftUI
 struct OSKUIColor: Identifiable {
     let name: String
     let color: Color
-    
+
     var id: String { return name }
 }

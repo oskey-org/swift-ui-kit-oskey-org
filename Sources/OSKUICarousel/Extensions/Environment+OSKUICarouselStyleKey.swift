@@ -37,5 +37,5 @@ extension EnvironmentValues {
 
 @available(iOS 15.0, OSX 12, *)
 struct OSKUICarouselStyleKey: EnvironmentKey {
-    static let defaultValue: OSKUIAnyCarouselStyle = OSKUIAnyCarouselStyle(OSKUIDefaultCarouselStyle())
+    static let defaultValue: OSKUIAnyCarouselStyle = .init(OSKUIDefaultCarouselStyle())
 }

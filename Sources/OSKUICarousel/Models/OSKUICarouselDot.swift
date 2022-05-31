@@ -26,7 +26,7 @@ import SwiftUI
 public struct OSKUICarouselDot: Identifiable {
     public let index: Int
     public let isActiveItem: Bool
-    
+
     public var id: Int {
         return index
     }

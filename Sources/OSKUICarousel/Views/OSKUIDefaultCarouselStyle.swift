@@ -27,25 +27,27 @@ import SwiftUI
 ///
 public class OSKUIDefaultCarouselStyle: OSKUICarouselStyle {
     public init() {}
-    
+
     public func makeBody(configuration: OSKUIConfiguration) -> some View {
         VStack(spacing: 16) {
             configuration.content
-            
-            HStack(spacing: 4) {
-                ForEach(configuration.dots) { dot in
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .frame(width: dot.isActiveItem ? 8 : 4, height: dot.isActiveItem ? 8 : 4, alignment: .center)
-                        .scaledToFit()
-                        .foregroundColor(dot.isActiveItem ? .accentColor : .white)
+
+            if configuration.dots.count > 1 {
+                HStack(spacing: 4) {
+                    ForEach(configuration.dots) { dot in
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: dot.isActiveItem ? 8 : 4, height: dot.isActiveItem ? 8 : 4, alignment: .center)
+                            .scaledToFit()
+                            .foregroundColor(dot.isActiveItem ? .accentColor : .white)
+                    }
                 }
+                .padding(8)
+                .frame(maxWidth: configuration.itemMaxWidth)
+                .background(Color.black.opacity(0.13))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .scaledToFit()
             }
-            .padding(8)
-            .frame(maxWidth: configuration.itemMaxWidth)
-            .background(Color.black.opacity(0.13))
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .scaledToFit()
         }
     }
 }

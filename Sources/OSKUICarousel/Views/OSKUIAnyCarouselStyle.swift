@@ -25,12 +25,12 @@ import SwiftUI
 
 class OSKUIAnyCarouselStyle: OSKUICarouselStyle {
     private let _makeBody: (OSKUICarouselStyle.OSKUIConfiguration) -> AnyView
-    
+
     init<OSKUIStyle: OSKUICarouselStyle>(_ style: OSKUIStyle) {
-        self._makeBody = style.makeBodyTypeErased
+        _makeBody = style.makeBodyTypeErased
     }
-    
+
     func makeBody(configuration: OSKUICarouselStyle.OSKUIConfiguration) -> AnyView {
-        return self._makeBody(configuration)
+        return _makeBody(configuration)
     }
 }

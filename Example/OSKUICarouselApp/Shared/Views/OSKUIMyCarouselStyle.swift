@@ -21,14 +21,14 @@
 // SOFTWARE.
 //
 
-import SwiftUI
 import OSKUICarousel
+import SwiftUI
 
-class OSKUIMyCarouselStyle: OSKUICarouselStyle {    
+class OSKUIMyCarouselStyle: OSKUICarouselStyle {
     func makeBody(configuration: OSKUIConfiguration) -> some View {
         VStack(spacing: 16) {
             configuration.content
-            
+
             HStack(spacing: 4) {
                 ForEach(configuration.dots) { dot in
                     Image(systemName: "circle.fill")

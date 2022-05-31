@@ -29,28 +29,26 @@ public enum OSKUICarouselAutoScroll {
     case active(TimeInterval)
 }
 
-
 @available(iOS 15.0, OSX 12.0, *)
 extension OSKUICarouselAutoScroll {
-    
     /// default active
     public static var defaultActive: Self {
         return .active(5)
     }
-    
+
     /// Is the view auto-scrolling
     var isActive: Bool {
         switch self {
-        case .active(let t): return t > 0
-        case .inactive : return false
+        case let .active(t): return t > 0
+        case .inactive: return false
         }
     }
-    
+
     /// Duration of automatic scrolling
     var interval: TimeInterval {
         switch self {
-        case .active(let t): return t
-        case .inactive : return 0
+        case let .active(t): return t
+        case .inactive: return 0
         }
     }
 }

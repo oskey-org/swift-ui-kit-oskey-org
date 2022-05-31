@@ -24,13 +24,12 @@
 import SwiftUI
 
 @available(iOS 15.0, OSX 12, *)
-extension View {
-
+public extension View {
     /// Set the style to apply to the Carousel.
     ///
     /// The style must implement the ``OSKUICarouselStyle`` protocol.
     ///
-    public func oskuiCarouselStyle<OSKUIStyle: OSKUICarouselStyle>(_ style: OSKUIStyle) -> some View {
-        self.environment(\.oskuiCarouselStyle, OSKUIAnyCarouselStyle(style))
+    func oskuiCarouselStyle<OSKUIStyle: OSKUICarouselStyle>(_ style: OSKUIStyle) -> some View {
+        environment(\.oskuiCarouselStyle, OSKUIAnyCarouselStyle(style))
     }
 }

@@ -1,5 +1,5 @@
-import XCTest
 @testable import OSKUICarousel
+import XCTest
 
 final class OSKUICarouselTests: XCTestCase {
 //    func testExample() throws {
