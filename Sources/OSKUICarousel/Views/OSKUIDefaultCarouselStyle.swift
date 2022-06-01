@@ -42,11 +42,11 @@ public class OSKUIDefaultCarouselStyle: OSKUICarouselStyle {
                             .foregroundColor(dot.isActiveItem ? .accentColor : .white)
                     }
                 }
-                .padding(8)
-                .frame(maxWidth: configuration.itemMaxWidth)
+                .padding(.vertical, 8)
+                .padding(.horizontal, 16)
                 .background(Color.black.opacity(0.13))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                .scaledToFit()
+                .frame(maxWidth: configuration.itemMaxWidth)
             }
         }
     }

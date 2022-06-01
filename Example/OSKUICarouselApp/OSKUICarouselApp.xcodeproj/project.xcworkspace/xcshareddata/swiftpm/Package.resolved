@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-ui-carousel-oskey-org",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/oskey-org/swift-ui-carousel-oskey-org",
+      "state" : {
+        "branch" : "master",
+        "revision" : "a6da52f5882d4e1a3072acf1ec4e7f3c84610a17"
+      }
+    }
+  ],
+  "version" : 2
+}
