@@ -33,7 +33,7 @@ public enum OSKUICarouselAutoScroll {
 extension OSKUICarouselAutoScroll {
     /// default active
     public static var defaultActive: Self {
-        return .active(5)
+        .active(5)
     }
 
     /// Is the view auto-scrolling

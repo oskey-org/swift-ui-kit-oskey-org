@@ -168,11 +168,11 @@ extension OSKUICarouselViewModel {
     }
 
     var dataId: KeyPath<OSKUIData.Element, OSKUIID> {
-        return _dataId
+        _dataId
     }
 
     var spacing: CGFloat {
-        return _spacing
+        _spacing
     }
 
     var offsetAnimation: Animation? {
@@ -218,7 +218,7 @@ extension OSKUICarouselViewModel {
 @available(iOS 15.0, OSX 11.0, *)
 private extension OSKUICarouselViewModel {
     var isWrap: Bool {
-        return _data.count > 1 ? _isWrap : false
+        _data.count > 1 ? _isWrap : false
     }
 
     var autoScroll: OSKUICarouselAutoScroll {
@@ -228,7 +228,7 @@ private extension OSKUICarouselViewModel {
     }
 
     var defaultPadding: CGFloat {
-        return (_headspace + spacing)
+        _headspace + spacing
     }
 
     var itemActualWidth: CGFloat {
@@ -236,7 +236,7 @@ private extension OSKUICarouselViewModel {
     }
 
     var sidesScaling: CGFloat {
-        return max(min(_sidesScaling, 1), 0)
+        max(min(_sidesScaling, 1), 0)
     }
 
     /// Is animated when view is in offset
@@ -328,7 +328,7 @@ extension OSKUICarouselViewModel {
         /// default is one third of subview
         let dragThreshold: CGFloat = itemWidth / 3
 
-        var activeIndex = self.activeIndex
+        var activeIndex = activeIndex
         if value.translation.width > dragThreshold {
             activeIndex -= 1
         }
@@ -387,7 +387,7 @@ private extension UserDefaults {
 
     static var isAnimatedOffset: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: Keys.isAnimatedOffset)
+            UserDefaults.standard.bool(forKey: Keys.isAnimatedOffset)
         }
         set {
             UserDefaults.standard.set(newValue, forKey: Keys.isAnimatedOffset)

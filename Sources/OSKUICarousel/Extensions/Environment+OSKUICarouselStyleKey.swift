@@ -27,7 +27,7 @@ import SwiftUI
 extension EnvironmentValues {
     var oskuiCarouselStyle: OSKUIAnyCarouselStyle {
         get {
-            return self[OSKUICarouselStyleKey.self]
+            self[OSKUICarouselStyleKey.self]
         }
         set {
             self[OSKUICarouselStyleKey.self] = newValue

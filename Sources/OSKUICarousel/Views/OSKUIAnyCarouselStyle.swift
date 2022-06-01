@@ -31,6 +31,6 @@ class OSKUIAnyCarouselStyle: OSKUICarouselStyle {
     }
 
     func makeBody(configuration: OSKUICarouselStyle.OSKUIConfiguration) -> AnyView {
-        return _makeBody(configuration)
+        _makeBody(configuration)
     }
 }

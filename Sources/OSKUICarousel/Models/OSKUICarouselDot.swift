@@ -28,6 +28,6 @@ public struct OSKUICarouselDot: Identifiable {
     public let isActiveItem: Bool
 
     public var id: Int {
-        return index
+        index
     }
 }
