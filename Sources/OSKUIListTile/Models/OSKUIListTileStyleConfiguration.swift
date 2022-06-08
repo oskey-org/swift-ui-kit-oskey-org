@@ -1,5 +1,5 @@
 //
-// swift-ui-carousel-oskey-org
+// swift-ui-kit-oskey-org
 // Copyright (c) 2022 OSkey SAS. MIT License
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,29 +23,10 @@
 
 import SwiftUI
 
-/// A type that applies standard interaction behavior and a custom appearance to all carousel within a view
-/// hierarchy.
-///
-/// To configure the current carousel style for a view hierarchy, use the ``oskuiCarouseStyle(_:)``
-/// modifier. Specify a style that conforms to ``OSKUICarouselStyle`` when creating a carousel that
-/// uses the standard carousel interaction behavior defined for each platform.
-///
-public protocol OSKUICarouselStyle {
-    /// A view that represents the body of a carousel.
-    ///
-    associatedtype OSKUIBody: View
-
-    /// Creates a view that represents the body of a button.
-    ///
-    func makeBody(configuration: Self.OSKUIConfiguration) -> Self.OSKUIBody
-
-    /// The properties of a carousel.
-    ///
-    typealias OSKUIConfiguration = OSKUICarouselStyleConfiguration
-}
-
-extension OSKUICarouselStyle {
-    func makeBodyTypeErased(configuration: Self.OSKUIConfiguration) -> AnyView {
-        AnyView(makeBody(configuration: configuration))
-    }
+@available(iOS 15.0, OSX 12, *)
+public struct OSKUIListTileStyleConfiguration {
+    public let title: AnyView
+    public let subtitle: AnyView?
+    public let leading: AnyView?
+    public let trailing: AnyView?
 }

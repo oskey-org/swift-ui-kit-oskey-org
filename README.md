@@ -9,7 +9,9 @@ additional UI elements provided in this UI kit.
 
 ## Content
 
-- `OSKUICarousel` is a stylable carousel to use within you SwiftUI powered apps.
+- `OSKUICarousel` is a stylable carousel, perfect for scrolling though photos,
+  cards, ...
+- `OSKUIListTile` is a stylable list tile suitable for list row element
 
 ## Supported platforms and minimal versions
 
@@ -33,7 +35,7 @@ dependencies: [
 
 ## OSKUICarousel
 
-### Use in your project
+### Get started
 
 Below is an example of sliding cards, with a person photo and it's name below.
 
@@ -162,6 +164,138 @@ struct ContentView: View {
 ### Example
 
 An example can be found [here](./Example/OSKUICarouselApp/).
+
+## OSKUIListTile
+
+### Get started
+
+Below is an example of sliding cards, with a person photo and it's name below.
+
+```swift
+import SwiftUI
+import OSKUICarousel
+
+struct ColorItem: Identifiable {
+    let name: String
+    let color: Color
+
+    var id: String { return name }
+}
+
+struct ContentView: View {
+    let colors = [
+        ColorItem(name: "Red", color: .red),
+        ColorItem(name: "Green", color: .green),
+        ColorItem(name: "Blue", color: .blue),
+    ]
+
+    @State private var currentIndex = 0
+
+    var body: some View {
+      OSKUICarousel(
+          colors,
+          index: $currentIndex,
+          spacing: 16,
+          headspace: 16,
+          sidesScaling: 0.8,
+          isWrap: false,
+          autoScroll: .active(5),
+          allowSwipe: true,
+          proxy: proxy
+      ) { color in
+          VStack {
+              color.color
+                  .aspectRatio(16/9, contentMode: .fit)
+              Text("**Color:** \(color.name)")
+                  .padding()
+          }
+          .background(.white)
+          .clipShape(RoundedRectangle(cornerRadius: 8))
+          .shadow(color: .gray, radius: 2, x: 1, y: 1)
+      }
+      .padding(.vertical)
+    }
+}
+```
+
+### Styling your carousel
+
+Styling the carousel is done by implementing the `OSKUICarouselStyle` protocol:
+
+```swift
+class OSKUIMyCarouselStyle: OSKUICarouselStyle {
+    func makeBody(configuration: OSKUIConfiguration) -> some View {
+        VStack(spacing: 16) {
+            configuration.content
+
+            HStack(spacing: 4) {
+                ForEach(configuration.dots) { dot in
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .frame(width: dot.isActiveItem ? 8 : 4, height: dot.isActiveItem ? 8 : 4, alignment: .center)
+                        .scaledToFit()
+                        .foregroundColor(dot.isActiveItem ? .red : .white)
+                }
+            }
+            .padding(8)
+            .frame(maxWidth: configuration.itemMaxWidth)
+            .background(Color.red.opacity(0.13))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .scaledToFit()
+        }
+        .padding(.vertical)
+        .background(Color.blue.opacity(0.13))
+    }
+}
+```
+
+Then, in the above example, add the modifier
+`.oskuiCarouselStyle(OSKUIMyCarouselStyle())`:
+
+```swift
+
+[...]
+
+struct ContentView: View {
+    let colors = [
+        ColorItem(name: "Red", color: .red),
+        ColorItem(name: "Green", color: .green),
+        ColorItem(name: "Blue", color: .blue),
+    ]
+
+    @State private var currentIndex = 0
+
+    var body: some View {
+      OSKUICarousel(
+          colors,
+          index: $currentIndex,
+          spacing: 16,
+          headspace: 16,
+          sidesScaling: 0.8,
+          isWrap: false,
+          autoScroll: .active(5),
+          allowSwipe: true,
+          proxy: proxy
+      ) { color in
+          VStack {
+              color.color
+                  .aspectRatio(16/9, contentMode: .fit)
+              Text("**Color:** \(color.name)")
+                  .padding()
+          }
+          .background(.white)
+          .clipShape(RoundedRectangle(cornerRadius: 8))
+          .shadow(color: .gray, radius: 2, x: 1, y: 1)
+      }
+      .oskuiCarouselStyle(OSKUIMyCarouselStyle())
+      .padding(.vertical)
+    }
+}
+```
+
+### Example
+
+An example can be found [here](./Example/OSKUIListTileApp/).
 
 ## Dependencies
 

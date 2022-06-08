@@ -1,5 +1,5 @@
 //
-// swift-ui-carousel-oskey-org
+// swift-ui-kit-oskey-org
 // Copyright (c) 2022 OSkey SAS. MIT License
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -200,7 +200,6 @@ public extension OSKUICarousel where OSKUIID == OSKUIData.Element.ID, OSKUIData.
     }
 }
 
-@available(iOS 15.0, OSX 11.0, *)
 struct OSKUICarousel_LibraryContent: LibraryContentProvider {
     let Datas = Array(repeating: _Item(color: .red), count: 3)
 

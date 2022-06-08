@@ -23,19 +23,30 @@
 
 import SwiftUI
 
+/// Defines the default carousel style
+///
 @available(iOS 15.0, OSX 12, *)
-extension EnvironmentValues {
-    var oskuiCarouselStyle: OSKUIAnyCarouselStyle {
-        get {
-            self[OSKUICarouselStyleKey.self]
-        }
-        set {
-            self[OSKUICarouselStyleKey.self] = newValue
+public class OSKUIDefaultListTileStyle: OSKUIListTileStyle {
+    public init() {}
+
+    public func makeBody(configuration: OSKUIConfiguration) -> some View {
+        HStack {
+            if let leading = configuration.leading {
+                leading
+            }
+            
+            VStack(alignment: .leading) {
+                configuration.title
+                if let subtitle = configuration.subtitle {
+                    subtitle
+                }
+            }
+            
+            Spacer()
+            
+            if let trailing = configuration.trailing {
+                trailing
+            }
         }
     }
-}
-
-@available(iOS 15.0, OSX 12, *)
-struct OSKUICarouselStyleKey: EnvironmentKey {
-    static let defaultValue: OSKUIAnyCarouselStyle = .init(OSKUIDefaultCarouselStyle())
 }

@@ -9,8 +9,16 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
+            name: "OSKUIKit",
+            targets: ["OSKUICarousel", "OSKUIListTile"]
+        ),
+        .library(
             name: "OSKUICarousel",
             targets: ["OSKUICarousel"]
+        ),
+        .library(
+            name: "OSKUIListTile",
+            targets: ["OSKUIListTile"]
         ),
     ],
     dependencies: [
@@ -24,9 +32,17 @@ let package = Package(
             name: "OSKUICarousel",
             dependencies: []
         ),
+        .target(
+            name: "OSKUIListTile",
+            dependencies: []
+        ),
         .testTarget(
             name: "OSKUICarouselTests",
             dependencies: ["OSKUICarousel"]
+        ),
+        .testTarget(
+            name: "OSKUIListTileTests",
+            dependencies: ["OSKUIListTile"]
         ),
     ]
 )

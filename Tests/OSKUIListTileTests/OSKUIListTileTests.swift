@@ -1,5 +1,5 @@
 //
-// swift-ui-carousel-oskey-org
+// swift-ui-kit-oskey-org
 // Copyright (c) 2022 OSkey SAS. MIT License
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,16 +21,14 @@
 // SOFTWARE.
 //
 
-import SwiftUI
+@testable import OSKUIListTile
+import XCTest
 
-class OSKUIAnyCarouselStyle: OSKUICarouselStyle {
-    private let _makeBody: (OSKUICarouselStyle.OSKUIConfiguration) -> AnyView
-
-    init<OSKUIStyle: OSKUICarouselStyle>(_ style: OSKUIStyle) {
-        _makeBody = style.makeBodyTypeErased
-    }
-
-    func makeBody(configuration: OSKUICarouselStyle.OSKUIConfiguration) -> AnyView {
-        _makeBody(configuration)
-    }
+final class OSKUIListTileTests: XCTestCase {
+    //    func testExample() throws {
+    //        // This is an example of a functional test case.
+    //        // Use XCTAssert and related functions to verify your tests produce the correct
+    //        // results.
+    //        XCTAssertEqual(OSKUIListTile().text, "Hello, World!")
+    //    }
 }

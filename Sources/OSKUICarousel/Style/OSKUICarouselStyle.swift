@@ -1,5 +1,5 @@
 //
-// swift-ui-carousel-oskey-org
+// swift-ui-kit-oskey-org
 // Copyright (c) 2022 OSkey SAS. MIT License
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,31 +23,29 @@
 
 import SwiftUI
 
-/// Defines the default carousel style
+/// A type that applies standard interaction behavior and a custom appearance to all carousels within a view
+/// hierarchy.
 ///
-public class OSKUIDefaultCarouselStyle: OSKUICarouselStyle {
-    public init() {}
+/// To configure the current carousel style for a view hierarchy, use the ``oskuiCarouselStyle(_:)``
+/// modifier. Specify a style that conforms to ``OSKUICarouselStyle`` when creating a carousel that
+/// uses the standard carousel interaction behavior defined for each platform.
+///
+public protocol OSKUICarouselStyle {
+    /// A view that represents the body of a carousel.
+    ///
+    associatedtype OSKUIBody: View
 
-    public func makeBody(configuration: OSKUIConfiguration) -> some View {
-        VStack(spacing: 16) {
-            configuration.content
+    /// Creates a view that represents the body of a carousel.
+    ///
+    func makeBody(configuration: Self.OSKUIConfiguration) -> Self.OSKUIBody
 
-            if configuration.dots.count > 1 {
-                HStack(spacing: 4) {
-                    ForEach(configuration.dots) { dot in
-                        Image(systemName: "circle.fill")
-                            .resizable()
-                            .frame(width: dot.isActiveItem ? 8 : 4, height: dot.isActiveItem ? 8 : 4, alignment: .center)
-                            .scaledToFit()
-                            .foregroundColor(dot.isActiveItem ? .accentColor : .white)
-                    }
-                }
-                .padding(.vertical, 8)
-                .padding(.horizontal, 16)
-                .background(Color.black.opacity(0.13))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .frame(maxWidth: configuration.itemMaxWidth)
-            }
-        }
+    /// The properties of a carousel.
+    ///
+    typealias OSKUIConfiguration = OSKUICarouselStyleConfiguration
+}
+
+extension OSKUICarouselStyle {
+    func makeBodyTypeErased(configuration: Self.OSKUIConfiguration) -> AnyView {
+        AnyView(makeBody(configuration: configuration))
     }
 }

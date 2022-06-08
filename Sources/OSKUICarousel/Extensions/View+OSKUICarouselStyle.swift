@@ -1,5 +1,5 @@
 //
-// swift-ui-carousel-oskey-org
+// swift-ui-kit-oskey-org
 // Copyright (c) 2022 OSkey SAS. MIT License
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,6 +30,6 @@ public extension View {
     /// The style must implement the ``OSKUICarouselStyle`` protocol.
     ///
     func oskuiCarouselStyle<OSKUIStyle: OSKUICarouselStyle>(_ style: OSKUIStyle) -> some View {
-        environment(\.oskuiCarouselStyle, OSKUIAnyCarouselStyle(style))
+        self.environment(\.oskuiCarouselStyle, OSKUIAnyCarouselStyle(style))
     }
 }
