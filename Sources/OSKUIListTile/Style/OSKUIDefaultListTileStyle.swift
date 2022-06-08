@@ -34,16 +34,16 @@ public class OSKUIDefaultListTileStyle: OSKUIListTileStyle {
             if let leading = configuration.leading {
                 leading
             }
-            
+
             VStack(alignment: .leading) {
                 configuration.title
                 if let subtitle = configuration.subtitle {
                     subtitle
                 }
             }
-            
+
             Spacer()
-            
+
             if let trailing = configuration.trailing {
                 trailing
             }

@@ -30,6 +30,6 @@ public extension View {
     /// The style must implement the ``OSKUICarouselStyle`` protocol.
     ///
     func oskuiListTileStyle<OSKUIStyle: OSKUIListTileStyle>(_ style: OSKUIStyle) -> some View {
-        self.environment(\.oskuiListTileStyle, OSKUIAnyListTileStyle(style))
+        environment(\.oskuiListTileStyle, OSKUIAnyListTileStyle(style))
     }
 }

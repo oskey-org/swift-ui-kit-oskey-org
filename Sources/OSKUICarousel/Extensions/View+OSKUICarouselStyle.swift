@@ -30,6 +30,6 @@ public extension View {
     /// The style must implement the ``OSKUICarouselStyle`` protocol.
     ///
     func oskuiCarouselStyle<OSKUIStyle: OSKUICarouselStyle>(_ style: OSKUIStyle) -> some View {
-        self.environment(\.oskuiCarouselStyle, OSKUIAnyCarouselStyle(style))
+        environment(\.oskuiCarouselStyle, OSKUIAnyCarouselStyle(style))
     }
 }

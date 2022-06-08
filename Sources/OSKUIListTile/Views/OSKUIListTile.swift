@@ -26,9 +26,9 @@ import SwiftUI
 @available(iOS 15.0, OSX 12, *)
 public struct OSKUIListTile: View {
     private var configuration: OSKUIListTileStyleConfiguration
-    
+
     @Environment(\.oskuiListTileStyle) private var style: OSKUIAnyListTileStyle
-    
+
     public init<OSKUITitle: View, OSKUISubtitle: View>(
         @ViewBuilder title: @escaping () -> OSKUITitle,
         @ViewBuilder subtitle: @escaping () -> OSKUISubtitle
@@ -40,7 +40,7 @@ public struct OSKUIListTile: View {
             trailing: nil
         )
     }
-    
+
     public init<OSKUITitle: View>(@ViewBuilder title: @escaping () -> OSKUITitle) {
         configuration = OSKUIListTileStyleConfiguration(
             title: AnyView(title()),
@@ -49,35 +49,35 @@ public struct OSKUIListTile: View {
             trailing: nil
         )
     }
-    
+
     init(title: AnyView, subtitle: AnyView? = nil, leading: AnyView? = nil, trailing: AnyView? = nil) {
         configuration = OSKUIListTileStyleConfiguration(title: title, subtitle: subtitle, leading: leading, trailing: trailing)
     }
-    
+
     public var body: some View {
-        return style.makeBody(configuration: configuration)
+        style.makeBody(configuration: configuration)
     }
 }
 
 @available(iOS 15.0, OSX 12, *)
-extension OSKUIListTile {
-    public func oskuiLeading<OSKUILeading: View>(@ViewBuilder leading: @escaping () -> OSKUILeading) -> OSKUIListTile {
-        return OSKUIListTile(title: configuration.title, subtitle: configuration.subtitle, leading: AnyView(leading()), trailing: nil)
+public extension OSKUIListTile {
+    func oskuiLeading<OSKUILeading: View>(@ViewBuilder leading: @escaping () -> OSKUILeading) -> OSKUIListTile {
+        OSKUIListTile(title: configuration.title, subtitle: configuration.subtitle, leading: AnyView(leading()), trailing: nil)
     }
-    
-    public func oskuiLeading<OSKUILeading: View, OSKUITrailing: View>(
+
+    func oskuiLeading<OSKUILeading: View, OSKUITrailing: View>(
         @ViewBuilder leading: @escaping () -> OSKUILeading,
         @ViewBuilder trailing: @escaping () -> OSKUITrailing
     ) -> OSKUIListTile {
-        return OSKUIListTile(title: configuration.title, subtitle: configuration.subtitle, leading: AnyView(leading()), trailing: AnyView(trailing()))
+        OSKUIListTile(title: configuration.title, subtitle: configuration.subtitle, leading: AnyView(leading()), trailing: AnyView(trailing()))
     }
-    
-    public func oskuiTrailing<OSKUITrailing: View>(@ViewBuilder trailing: @escaping () -> OSKUITrailing) -> OSKUIListTile {
-        return OSKUIListTile(title: configuration.title, subtitle: configuration.subtitle, leading: nil, trailing: AnyView(trailing()))
+
+    func oskuiTrailing<OSKUITrailing: View>(@ViewBuilder trailing: @escaping () -> OSKUITrailing) -> OSKUIListTile {
+        OSKUIListTile(title: configuration.title, subtitle: configuration.subtitle, leading: nil, trailing: AnyView(trailing()))
     }
 }
 
-//struct OSKUILeadingViewModifier<OSKUILeading: View>: ViewModifier {
+// struct OSKUILeadingViewModifier<OSKUILeading: View>: ViewModifier {
 //    let leading: OSKUILeading
 //
 //    init(@ViewBuilder leading: @escaping () -> OSKUILeading) {
@@ -91,9 +91,9 @@ extension OSKUIListTile {
 //            content
 //        }
 //    }
-//}
+// }
 //
-//struct OSKUITrailingViewModifier<OSKUITrailing: View>: ViewModifier {
+// struct OSKUITrailingViewModifier<OSKUITrailing: View>: ViewModifier {
 //    let trailing: OSKUITrailing
 //
 //    init(@ViewBuilder trailing: @escaping () -> OSKUITrailing) {
@@ -107,9 +107,9 @@ extension OSKUIListTile {
 //            trailing
 //        }
 //    }
-//}
+// }
 //
-//extension View {
+// extension View {
 //    func oskuiLeading<OSKUILeading: View>(@ViewBuilder leading: @escaping () -> OSKUILeading) -> some View {
 //        modifier(OSKUILeadingViewModifier(leading: leading))
 //    }
@@ -117,9 +117,9 @@ extension OSKUIListTile {
 //    func oskuiTrailing<OSKUITrailing: View>(@ViewBuilder trailing: @escaping () -> OSKUITrailing) -> some View {
 //        modifier(OSKUITrailingViewModifier(trailing: trailing))
 //    }
-//}
+// }
 //
-//struct OSKUIListTile<OSKUITitle: View, OSKUISubtitle: View>: View {
+// struct OSKUIListTile<OSKUITitle: View, OSKUISubtitle: View>: View {
 //    let title: OSKUITitle
 //    let subtitle: OSKUISubtitle
 //    private var hasSubtitle: Bool
@@ -149,9 +149,9 @@ extension OSKUIListTile {
 //            Spacer()
 //        }
 //    }
-//}
+// }
 //
-//extension OSKUIListTile where OSKUISubtitle == EmptyView {
+// extension OSKUIListTile where OSKUISubtitle == EmptyView {
 //    init(@ViewBuilder title: @escaping () -> OSKUITitle) {
 //        self.init(
 //            title: title,
@@ -161,9 +161,9 @@ extension OSKUIListTile {
 //            hasSubtitle: false
 //        )
 //    }
-//}
+// }
 
-//struct OSKListTile_Previews: PreviewProvider {
+// struct OSKListTile_Previews: PreviewProvider {
 //    static var previews: some View {
 //        List {
 //            OSKListTile(
@@ -207,5 +207,4 @@ extension OSKUIListTile {
 //            }
 //        }
 //    }
-//}
-
+// }
