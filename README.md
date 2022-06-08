@@ -1,10 +1,15 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-# OSKUICarousel - A Carousel for SwifUI, by OSkey
+# OSKUIKit - OSkey supplemental UI kit for SwitfUI
 
 Copyright (c) 2022 OSkey SAS. MIT License.
 
-`OSKUICarousel` is a stylable carousel to use within you SwiftUI powered apps.
+The OSkey app (not yet publicly released) uses SwiftUI, and is supplemented by a of
+additional UI elements provided in this UI kit.
+
+## Content
+
+- `OSKUICarousel` is a stylable carousel to use within you SwiftUI powered apps.
 
 ## Supported platforms and minimal versions
 
@@ -23,10 +28,12 @@ Open Xcode, go to File -> Swift Packages -> Add Package Dependency and enter
 You can also add ACarousel as a dependency to your Package.swift:
 
 dependencies: [
-.package(url: "https://github.com/oskey-org/swift-ui-carousel-oskey-org.git", from: "1.0.0")
+.package(url: "https://github.com/oskey-org/swift-ui-kit-oskey-org.git", from: "1.0.0")
 ]
 
-## Use in your project
+## OSKUICarousel
+
+### Use in your project
 
 Below is an example of sliding cards, with a person photo and it's name below.
 
@@ -77,7 +84,7 @@ struct ContentView: View {
 }
 ```
 
-## Styling your carousel
+### Styling your carousel
 
 Styling the carousel is done by implementing the `OSKUICarouselStyle` protocol:
 
@@ -152,13 +159,13 @@ struct ContentView: View {
 }
 ```
 
+### Example
+
+An example can be found [here](./Example/OSKUICarouselApp/).
+
 ## Dependencies
 
 This package has no dependencies.
-
-## Example
-
-An example can be found [here](./Example/OSKUICarouselApp/).
 
 ## Thanks
 
