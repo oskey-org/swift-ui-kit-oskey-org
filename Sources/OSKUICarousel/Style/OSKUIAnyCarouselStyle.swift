@@ -23,19 +23,14 @@
 
 import SwiftUI
 
-@available(iOS 15.0, OSX 12, *)
-extension EnvironmentValues {
-    var oskuiCarouselStyle: OSKUIAnyCarouselStyle {
-        get {
-            self[OSKUICarouselStyleKey.self]
-        }
-        set {
-            self[OSKUICarouselStyleKey.self] = newValue
-        }
-    }
-}
+class OSKUIAnyCarouselStyle: OSKUICarouselStyle {
+    private let _makeBody: (OSKUICarouselStyle.OSKUIConfiguration) -> AnyView
 
-@available(iOS 15.0, OSX 12, *)
-struct OSKUICarouselStyleKey: EnvironmentKey {
-    static let defaultValue: OSKUIAnyCarouselStyle = .init(OSKUIDefaultCarouselStyle())
+    init<OSKUIStyle: OSKUICarouselStyle>(_ style: OSKUIStyle) {
+        _makeBody = style.makeBodyTypeErased
+    }
+
+    func makeBody(configuration: OSKUICarouselStyle.OSKUIConfiguration) -> AnyView {
+        _makeBody(configuration)
+    }
 }

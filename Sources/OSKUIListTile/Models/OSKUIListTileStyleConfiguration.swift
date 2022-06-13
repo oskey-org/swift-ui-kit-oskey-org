@@ -1,5 +1,5 @@
 //
-// swift-ui-carousel-oskey-org
+// swift-ui-kit-oskey-org
 // Copyright (c) 2022 OSkey SAS. MIT License
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,31 +23,10 @@
 
 import SwiftUI
 
-/// Defines the default carousel style
-///
-public class OSKUIDefaultCarouselStyle: OSKUICarouselStyle {
-    public init() {}
-
-    public func makeBody(configuration: OSKUIConfiguration) -> some View {
-        VStack(spacing: 16) {
-            configuration.content
-
-            if configuration.dots.count > 1 {
-                HStack(spacing: 4) {
-                    ForEach(configuration.dots) { dot in
-                        Image(systemName: "circle.fill")
-                            .resizable()
-                            .frame(width: dot.isActiveItem ? 8 : 4, height: dot.isActiveItem ? 8 : 4, alignment: .center)
-                            .scaledToFit()
-                            .foregroundColor(dot.isActiveItem ? .accentColor : .white)
-                    }
-                }
-                .padding(.vertical, 8)
-                .padding(.horizontal, 16)
-                .background(Color.black.opacity(0.13))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .frame(maxWidth: configuration.itemMaxWidth)
-            }
-        }
-    }
+@available(iOS 15.0, OSX 12, *)
+public struct OSKUIListTileStyleConfiguration {
+    public let title: AnyView
+    public let subtitle: AnyView?
+    public let leading: AnyView?
+    public let trailing: AnyView?
 }

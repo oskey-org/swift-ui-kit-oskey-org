@@ -25,17 +25,17 @@ import SwiftUI
 
 @available(iOS 15.0, OSX 12, *)
 extension EnvironmentValues {
-    var oskuiCarouselStyle: OSKUIAnyCarouselStyle {
+    var oskuiListTileStyle: OSKUIAnyListTileStyle {
         get {
-            self[OSKUICarouselStyleKey.self]
+            self[OSKUIListTileStyleKey.self]
         }
         set {
-            self[OSKUICarouselStyleKey.self] = newValue
+            self[OSKUIListTileStyleKey.self] = newValue
         }
     }
 }
 
 @available(iOS 15.0, OSX 12, *)
-struct OSKUICarouselStyleKey: EnvironmentKey {
-    static let defaultValue: OSKUIAnyCarouselStyle = .init(OSKUIDefaultCarouselStyle())
+struct OSKUIListTileStyleKey: EnvironmentKey {
+    static let defaultValue: OSKUIAnyListTileStyle = .init(OSKUIDefaultListTileStyle())
 }

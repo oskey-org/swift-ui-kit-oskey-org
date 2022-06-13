@@ -4,12 +4,14 @@
 
 Copyright (c) 2022 OSkey SAS. MIT License.
 
-The OSkey app (not yet publicly released) uses SwiftUI, and is supplemented by a of
+The OSkey app (not yet publicly released) uses SwiftUI, and is supplemented by 
 additional UI elements provided in this UI kit.
 
 ## Content
 
-- `OSKUICarousel` is a stylable carousel to use within you SwiftUI powered apps.
+- `OSKUICarousel` is a stylable carousel, perfect for scrolling though photos,
+  cards, ...
+- `OSKUIListTile` is a stylable list tile suitable for list row element
 
 ## Supported platforms and minimal versions
 
@@ -33,7 +35,7 @@ dependencies: [
 
 ## OSKUICarousel
 
-### Use in your project
+### Get started
 
 Below is an example of sliding cards, with a person photo and it's name below.
 
@@ -84,7 +86,7 @@ struct ContentView: View {
 }
 ```
 
-### Styling your carousel
+### Styling your carousels
 
 Styling the carousel is done by implementing the `OSKUICarouselStyle` protocol:
 
@@ -162,6 +164,20 @@ struct ContentView: View {
 ### Example
 
 An example can be found [here](./Example/OSKUICarouselApp/).
+
+## OSKUIListTile
+
+### Get started
+
+Coming soon...
+
+### Styling your list tiles
+
+Coming soon...
+
+### Example
+
+Coming soon...
 
 ## Dependencies
 

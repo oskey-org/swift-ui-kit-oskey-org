@@ -23,19 +23,31 @@
 
 import SwiftUI
 
+/// A type that applies standard interaction behavior and a custom appearance to all list tiles within a view
+/// hierarchy.
+///
+/// To configure the current list tile style for a view hierarchy, use the ``oskuiListTileStyle(_:)``
+/// modifier. Specify a style that conforms to ``OSKUIListTileStyle`` when creating a list tile that
+/// uses the standard list tile interaction behavior defined for each platform.
+///
 @available(iOS 15.0, OSX 12, *)
-extension EnvironmentValues {
-    var oskuiCarouselStyle: OSKUIAnyCarouselStyle {
-        get {
-            self[OSKUICarouselStyleKey.self]
-        }
-        set {
-            self[OSKUICarouselStyleKey.self] = newValue
-        }
-    }
+public protocol OSKUIListTileStyle {
+    /// A view that represents the body of a list tile.
+    ///
+    associatedtype OSKUIBody: View
+
+    /// Creates a view that represents the body of a list tile.
+    ///
+    func makeBody(configuration: Self.OSKUIConfiguration) -> Self.OSKUIBody
+
+    /// The properties of a list tile.
+    ///
+    typealias OSKUIConfiguration = OSKUIListTileStyleConfiguration
 }
 
 @available(iOS 15.0, OSX 12, *)
-struct OSKUICarouselStyleKey: EnvironmentKey {
-    static let defaultValue: OSKUIAnyCarouselStyle = .init(OSKUIDefaultCarouselStyle())
+extension OSKUIListTileStyle {
+    func makeBodyTypeErased(configuration: Self.OSKUIConfiguration) -> AnyView {
+        AnyView(makeBody(configuration: configuration))
+    }
 }

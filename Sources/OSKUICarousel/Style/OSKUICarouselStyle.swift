@@ -23,19 +23,29 @@
 
 import SwiftUI
 
-@available(iOS 15.0, OSX 12, *)
-extension EnvironmentValues {
-    var oskuiCarouselStyle: OSKUIAnyCarouselStyle {
-        get {
-            self[OSKUICarouselStyleKey.self]
-        }
-        set {
-            self[OSKUICarouselStyleKey.self] = newValue
-        }
-    }
+/// A type that applies standard interaction behavior and a custom appearance to all carousels within a view
+/// hierarchy.
+///
+/// To configure the current carousel style for a view hierarchy, use the ``oskuiCarouselStyle(_:)``
+/// modifier. Specify a style that conforms to ``OSKUICarouselStyle`` when creating a carousel that
+/// uses the standard carousel interaction behavior defined for each platform.
+///
+public protocol OSKUICarouselStyle {
+    /// A view that represents the body of a carousel.
+    ///
+    associatedtype OSKUIBody: View
+
+    /// Creates a view that represents the body of a carousel.
+    ///
+    func makeBody(configuration: Self.OSKUIConfiguration) -> Self.OSKUIBody
+
+    /// The properties of a carousel.
+    ///
+    typealias OSKUIConfiguration = OSKUICarouselStyleConfiguration
 }
 
-@available(iOS 15.0, OSX 12, *)
-struct OSKUICarouselStyleKey: EnvironmentKey {
-    static let defaultValue: OSKUIAnyCarouselStyle = .init(OSKUIDefaultCarouselStyle())
+extension OSKUICarouselStyle {
+    func makeBodyTypeErased(configuration: Self.OSKUIConfiguration) -> AnyView {
+        AnyView(makeBody(configuration: configuration))
+    }
 }

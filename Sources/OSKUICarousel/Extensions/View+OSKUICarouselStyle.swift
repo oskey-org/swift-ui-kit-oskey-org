@@ -1,5 +1,5 @@
 //
-// swift-ui-carousel-oskey-org
+// swift-ui-kit-oskey-org
 // Copyright (c) 2022 OSkey SAS. MIT License
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
